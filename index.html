@@ -6,7 +6,7 @@
 
 <title>PIK STUDIO</title>
 
-<meta name="description" content="PIK Studio">
+<meta name="description" content="PIK Studio — Coming Soon">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,6 +141,11 @@ h1{
 /* ---------- Contact modal ---------- */
 
 dialog.talk-modal{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    margin:0;
     border:none;
     border-radius:16px;
     padding:0;
@@ -383,6 +388,11 @@ PIK STUDIO
                     <textarea id="enquiry" name="enquiry" rows="4" required></textarea>
                 </div>
 
+                <!-- Web3Forms config (https://web3forms.com) -->
+                <input type="hidden" name="access_key" value="b355c877-3881-4a5b-bef6-9bcb6263b08b">
+                <input type="hidden" name="subject" value="New enquiry from PIK Studio website">
+                <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
                 <p class="form-error" id="formError" hidden></p>
 
                 <button type="submit" class="submit-btn" id="submitBtn">Send enquiry</button>
@@ -401,8 +411,8 @@ PIK STUDIO
 <script>
 (function(){
 
-    // TODO: paste your Azure Function's URL (including the ?code=... key) here.
-    const FORM_ENDPOINT = "https://pikstudio-mailer-hxewetb6a5eaenb7.austriaeast-01.azurewebsites.net/api/SendEnquiry?code=ZhjIu3iksZgdSNp2uYNY9REeVT8yxHcNQ16oONqJ_CwjAzFu1-xE_A==";
+    // Web3Forms — https://web3forms.com
+    const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
     const modal = document.getElementById('talkModal');
     const openBtn = document.getElementById('openTalkModal');
@@ -447,25 +457,25 @@ PIK STUDIO
             return;
         }
 
-        const payload = {
-            firstName: form.firstName.value.trim(),
-            lastName: form.lastName.value.trim(),
-            email: form.email.value.trim(),
-            mobile: form.mobile.value.trim(),
-            enquiry: form.enquiry.value.trim()
-        };
+        const formData = new FormData(form);
+        // Web3Forms expects a single "message" field — combine mobile + enquiry into it.
+        formData.set('message', 'Mobile: ' + form.mobile.value.trim() + '\n\n' + form.enquiry.value.trim());
 
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
 
         try {
-            const res = await fetch(FORM_ENDPOINT, {
+            const res = await fetch(WEB3FORMS_ENDPOINT, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                headers: { 'Accept': 'application/json' },
+                body: formData
             });
 
-            if (!res.ok) throw new Error('Request failed with status ' + res.status);
+            const result = await res.json();
+
+            if (!res.ok || !result.success) {
+                throw new Error(result.message || 'Request failed with status ' + res.status);
+            }
 
             formView.hidden = true;
             thankYouView.hidden = false;
