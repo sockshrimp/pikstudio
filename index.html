@@ -240,6 +240,12 @@ dialog.talk-modal::backdrop{
     margin-bottom:16px;
 }
 
+.captcha-wrap{
+    display:flex;
+    justify-content:center;
+    margin-bottom:18px;
+}
+
 .submit-btn{
     width:100%;
     border:none;
@@ -393,6 +399,11 @@ PIK STUDIO
                 <input type="hidden" name="subject" value="New enquiry from PIK Studio website">
                 <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
+                <!-- hCaptcha (spam protection) — https://docs.web3forms.com/getting-started/customizations/spam-protection/hcaptcha -->
+                <div class="captcha-wrap">
+                    <div class="h-captcha" data-captcha="true"></div>
+                </div>
+
                 <p class="form-error" id="formError" hidden></p>
 
                 <button type="submit" class="submit-btn" id="submitBtn">Send enquiry</button>
@@ -446,6 +457,7 @@ PIK STUDIO
         thankYouView.hidden = true;
         form.reset();
         formError.hidden = true;
+        if (window.hcaptcha) window.hcaptcha.reset();
     });
 
     form.addEventListener('submit', async function(e){
@@ -454,6 +466,13 @@ PIK STUDIO
 
         if (!form.checkValidity()){
             form.reportValidity();
+            return;
+        }
+
+        const captchaResponse = form.querySelector('[name="h-captcha-response"]');
+        if (!captchaResponse || !captchaResponse.value){
+            formError.textContent = "Please complete the captcha before submitting.";
+            formError.hidden = false;
             return;
         }
 
@@ -485,11 +504,15 @@ PIK STUDIO
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send enquiry';
+            if (window.hcaptcha) window.hcaptcha.reset();
         }
     });
 
 })();
 </script>
+
+<!-- Web3Forms hCaptcha widget loader -->
+<script src="https://web3forms.com/client/script.js" async defer></script>
 
 </body>
 </html>
