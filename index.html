@@ -67,16 +67,25 @@ h1{
     margin-bottom:40px;
 }
 
-.instagram-btn{
+.cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+}
+
+.instagram-btn,
+.talk-btn{
     display:inline-flex;
     align-items:center;
     gap:14px;
 
     text-decoration:none;
-    color:#000;
+    font-family:inherit;
+    cursor:pointer;
 
     border:2px solid #000;
-    border-radius:10px;
+    border-radius:50px;
 
     padding:18px 34px;
 
@@ -84,6 +93,11 @@ h1{
     font-size:18px;
 
     transition:all .3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.instagram-btn{
+    color:#000;
+    background:transparent;
 }
 
 .instagram-btn svg{
@@ -102,6 +116,18 @@ h1{
     stroke:white;
 }
 
+.talk-btn{
+    color:#fff;
+    background:#000;
+}
+
+.talk-btn:hover{
+    background:#fff;
+    color:#000;
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
 .footer{
     position:fixed;
     bottom:30px;
@@ -110,6 +136,137 @@ h1{
     font-size:13px;
     color:#777;
     letter-spacing:2px;
+}
+
+/* ---------- Contact modal ---------- */
+
+dialog.talk-modal{
+    border:none;
+    border-radius:16px;
+    padding:0;
+    width:90%;
+    max-width:480px;
+    max-height:90vh;
+    box-shadow:0 20px 60px rgba(0,0,0,0.25);
+}
+
+dialog.talk-modal::backdrop{
+    background:rgba(0,0,0,0.6);
+}
+
+.modal-card{
+    position:relative;
+    padding:40px 32px;
+    text-align:left;
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+.modal-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:32px;
+    height:32px;
+    border:none;
+    background:transparent;
+    font-size:24px;
+    line-height:1;
+    cursor:pointer;
+    color:#000;
+}
+
+.modal-card h2{
+    font-size:28px;
+    letter-spacing:2px;
+    margin-bottom:8px;
+}
+
+.modal-subtitle{
+    font-size:14px;
+    color:#555;
+    margin-bottom:24px;
+}
+
+.form-row{
+    display:flex;
+    gap:16px;
+}
+
+.form-row .form-group{
+    flex:1;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+    color:#000;
+}
+
+.form-group input,
+.form-group textarea{
+    width:100%;
+    border:none;
+    border-bottom:2px solid #000;
+    padding:8px 0;
+    font-size:16px;
+    font-family:inherit;
+    background:transparent;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    outline:none;
+    border-bottom-color:#777;
+}
+
+.form-error{
+    color:#c0392b;
+    font-size:14px;
+    margin-bottom:16px;
+}
+
+.submit-btn{
+    width:100%;
+    border:none;
+    border-radius:50px;
+    background:#000;
+    color:#fff;
+    padding:16px;
+    font-weight:700;
+    font-size:16px;
+    font-family:inherit;
+    cursor:pointer;
+    transition:all .3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.submit-btn:hover:not(:disabled){
+    background:#333;
+}
+
+.submit-btn:disabled{
+    opacity:0.6;
+    cursor:not-allowed;
+}
+
+.thank-you h2{
+    font-size:28px;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.thank-you p{
+    font-size:15px;
+    color:#333;
 }
 
 @media (max-width:700px){
@@ -123,10 +280,25 @@ h1{
     margin-bottom:35px;
 }
 
-.instagram-btn{
+.cta-row{
+    flex-direction:column;
+    width:100%;
+}
+
+.instagram-btn,
+.talk-btn{
     width:100%;
     justify-content:center;
     font-size:16px;
+}
+
+.modal-card{
+    padding:32px 24px;
+}
+
+.form-row{
+    flex-direction:column;
+    gap:0;
 }
 
 }
@@ -144,27 +316,170 @@ h1{
 
     <h1>COMING SOON</h1>
 
-    <a
-        class="instagram-btn"
-        href="https://www.instagram.com/pikstudio.adl"
-        target="_blank"
-        rel="noopener noreferrer">
+    <div class="cta-row">
 
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-            <circle cx="12" cy="12" r="4"></circle>
-            <circle cx="17.5" cy="6.5" r="1"></circle>
-        </svg>
+        <a
+            class="instagram-btn"
+            href="https://www.instagram.com/pikstudio.adl"
+            target="_blank"
+            rel="noopener noreferrer">
 
-        Follow us on Instagram
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="17.5" cy="6.5" r="1"></circle>
+            </svg>
 
-    </a>
+            Follow us on Instagram
+
+        </a>
+
+        <button type="button" class="talk-btn" id="openTalkModal">
+            Let's talk
+        </button>
+
+    </div>
 
 </div>
 
 <div class="footer">
 PIK STUDIO
 </div>
+
+<dialog id="talkModal" class="talk-modal">
+    <div class="modal-card">
+
+        <button type="button" class="modal-close" id="closeTalkModal" aria-label="Close">&times;</button>
+
+        <div id="formView">
+            <h2>Let's talk</h2>
+            <p class="modal-subtitle">Tell us a bit about your enquiry and we'll get back to you shortly.</p>
+
+            <form id="enquiryForm" novalidate>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First name</label>
+                        <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last name</label>
+                        <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile</label>
+                    <input type="tel" id="mobile" name="mobile" autocomplete="tel" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enquiry">Your enquiry</label>
+                    <textarea id="enquiry" name="enquiry" rows="4" required></textarea>
+                </div>
+
+                <p class="form-error" id="formError" hidden></p>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Send enquiry</button>
+
+            </form>
+        </div>
+
+        <div id="thankYouView" class="thank-you" hidden>
+            <h2>Thank you!</h2>
+            <p>We've received your message and will contact you as soon as possible.</p>
+        </div>
+
+    </div>
+</dialog>
+
+<script>
+(function(){
+
+    // TODO: paste your Azure Function's URL (including the ?code=... key) here.
+    const FORM_ENDPOINT = "https://pikstudio-mailer-hxewetb6a5eaenb7.austriaeast-01.azurewebsites.net/api/SendEnquiry?code=ZhjIu3iksZgdSNp2uYNY9REeVT8yxHcNQ16oONqJ_CwjAzFu1-xE_A==";
+
+    const modal = document.getElementById('talkModal');
+    const openBtn = document.getElementById('openTalkModal');
+    const closeBtn = document.getElementById('closeTalkModal');
+    const form = document.getElementById('enquiryForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formError = document.getElementById('formError');
+    const formView = document.getElementById('formView');
+    const thankYouView = document.getElementById('thankYouView');
+
+    openBtn.addEventListener('click', function(){
+        modal.showModal();
+    });
+
+    closeBtn.addEventListener('click', function(){
+        modal.close();
+    });
+
+    // Close when clicking the dark backdrop (outside the card)
+    modal.addEventListener('click', function(e){
+        const rect = modal.getBoundingClientRect();
+        const clickedInside =
+            e.clientX >= rect.left && e.clientX <= rect.right &&
+            e.clientY >= rect.top && e.clientY <= rect.bottom;
+        if (!clickedInside) modal.close();
+    });
+
+    // Reset back to the form view each time the modal is closed
+    modal.addEventListener('close', function(){
+        formView.hidden = false;
+        thankYouView.hidden = true;
+        form.reset();
+        formError.hidden = true;
+    });
+
+    form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        formError.hidden = true;
+
+        if (!form.checkValidity()){
+            form.reportValidity();
+            return;
+        }
+
+        const payload = {
+            firstName: form.firstName.value.trim(),
+            lastName: form.lastName.value.trim(),
+            email: form.email.value.trim(),
+            mobile: form.mobile.value.trim(),
+            enquiry: form.enquiry.value.trim()
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+            const res = await fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!res.ok) throw new Error('Request failed with status ' + res.status);
+
+            formView.hidden = true;
+            thankYouView.hidden = false;
+        } catch (err) {
+            formError.textContent = "Something went wrong sending your message. Please try again, or email us directly at enquires@pikstudio.com.au.";
+            formError.hidden = false;
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send enquiry';
+        }
+    });
+
+})();
+</script>
 
 </body>
 </html>
