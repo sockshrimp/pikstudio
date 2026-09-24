@@ -10,7 +10,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -82,7 +81,7 @@ h1{
     gap:10px;
 
     text-decoration:none;
-    font-family:Impact, "Anton", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     cursor:pointer;
 
     border:1.5px solid rgba(0,0,0,0.7);
@@ -92,7 +91,7 @@ h1{
 
     font-weight:400;
     font-size:19px;
-    letter-spacing:0.02em;
+    letter-spacing:0;
 
     color:#000;
     background:transparent;
@@ -105,40 +104,16 @@ h1{
         box-shadow .5s ease;
 }
 
-.instagram-btn svg{
-    width:18px;
-    height:18px;
-    stroke-width:1.5;
-    transition:transform .6s cubic-bezier(0.22,1,0.36,1);
-}
-
-.talk-btn .arrow{
-    display:inline-block;
-    opacity:.45;
-    transition:transform .5s cubic-bezier(0.22,1,0.36,1), opacity .5s ease;
-}
-
 .instagram-btn:hover,
 .talk-btn:hover,
 .instagram-btn:focus-visible,
 .talk-btn:focus-visible{
     border-color:#000;
     background-color:#faf8f4;
-    letter-spacing:0.05em;
+    letter-spacing:0.02em;
     transform:translateY(-1px);
     box-shadow:0 4px 14px rgba(0,0,0,0.04);
     outline:none;
-}
-
-.instagram-btn:hover svg,
-.instagram-btn:focus-visible svg{
-    transform:rotate(-8deg) scale(1.06);
-}
-
-.talk-btn:hover .arrow,
-.talk-btn:focus-visible .arrow{
-    transform:translateX(3px);
-    opacity:1;
 }
 
 .instagram-btn:active,
@@ -351,18 +326,12 @@ h1{
             target="_blank"
             rel="noopener noreferrer">
 
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                <circle cx="12" cy="12" r="4"></circle>
-                <circle cx="17.5" cy="6.5" r="1"></circle>
-            </svg>
-
             Follow us on Instagram
 
         </a>
 
         <button type="button" class="talk-btn" id="openTalkModal">
-            Let's talk <span class="arrow" aria-hidden="true">&rarr;</span>
+            Let's talk
         </button>
 
     </div>
