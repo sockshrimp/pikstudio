@@ -6,7 +6,7 @@
 
 <title>PIK STUDIO — Designer Flowers, Adelaide</title>
 
-<meta name="description" content="PIK Studio — designer flowers in Adelaide, minus the plastic. Zero foam, next to no waste.">
+<meta name="description" content="PIK Studio — designer flowers for weddings, events and gifts in Adelaide. By appointment only. Zero foam, zero plastic.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,6 +256,155 @@ a{
     font-size:18px;
     color:var(--ink-soft);
     margin-top:10px;
+}
+
+/* ---------- Services ---------- */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:clamp(18px,2.4vw,36px);
+}
+
+.service:nth-child(2){ margin-top:clamp(40px,7vw,110px); }
+.service:nth-child(3){ margin-top:clamp(80px,14vw,220px); }
+
+.service-frame{
+    position:relative;
+    overflow:hidden;
+    aspect-ratio:3 / 4;
+    background:var(--paper-deep);
+}
+
+.service-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 1.6s var(--ease);
+}
+
+.service-frame .placeholder{
+    position:absolute;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    font-size:clamp(40px,5vw,80px);
+    color:rgba(239,233,221,0.08);
+}
+
+.service-frame.is-empty img{ display:none; }
+.service-frame.is-empty .placeholder{ display:flex; }
+
+.service:hover .service-frame img{
+    transform:scale(1.035);
+}
+
+.service-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-top:22px;
+}
+
+.service-head .label{
+    color:var(--ink-soft);
+}
+
+.service h3{
+    font-weight:400;
+    font-size:clamp(40px,4.6vw,68px);
+    line-height:1;
+    transition:color .6s ease;
+}
+
+.service:hover h3{
+    color:var(--moss);
+}
+
+.service .lede{
+    margin-top:14px;
+    font-size:clamp(20px,1.7vw,24px);
+    line-height:1.3;
+}
+
+.service .detail{
+    margin-top:12px;
+    font-size:17px;
+    line-height:1.55;
+    color:var(--ink-soft);
+}
+
+.arrow-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:20px;
+    font-size:19px;
+    text-decoration:none;
+}
+
+.arrow-link .arr{
+    display:inline-block;
+    transition:transform .6s var(--ease);
+}
+
+.arrow-link:hover .arr,
+.arrow-link:focus-visible .arr{
+    transform:translateX(5px);
+}
+
+/* ---------- Appointment / process ---------- */
+
+.appt-intro{
+    display:grid;
+    grid-template-columns:1fr 2.2fr;
+    gap:24px;
+    margin-bottom:clamp(44px,6vw,80px);
+}
+
+.appt-intro p{
+    grid-column:2;
+    font-size:clamp(24px,2.6vw,36px);
+    line-height:1.25;
+    max-width:24em;
+}
+
+.steps{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:clamp(18px,2.4vw,36px);
+}
+
+.step{
+    border-top:1px solid var(--line);
+    padding-top:22px;
+}
+
+.step .num{
+    display:block;
+    font-size:clamp(48px,5vw,76px);
+    line-height:1;
+    color:rgba(239,233,221,0.22);
+    transition:color .6s ease;
+}
+
+.step:hover .num{
+    color:var(--moss);
+}
+
+.step h3{
+    font-weight:400;
+    font-size:clamp(26px,2.4vw,34px);
+    margin-top:18px;
+}
+
+.step p{
+    margin-top:10px;
+    font-size:17px;
+    line-height:1.55;
+    color:var(--ink-soft);
 }
 
 /* ---------- Work ---------- */
@@ -613,6 +762,60 @@ a{
     color:var(--ink-soft);
 }
 
+/* Occasion chips in the form */
+.chips{
+    border:none;
+    margin-bottom:30px;
+}
+
+.chips legend{
+    color:var(--ink-soft);
+    margin-bottom:12px;
+}
+
+.chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.chip input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+
+.chip span{
+    display:inline-block;
+    padding:9px 20px;
+    border:1px solid rgba(239,233,221,0.3);
+    border-radius:50px;
+    font-size:18px;
+    cursor:pointer;
+    transition:background-color .5s ease, color .5s ease, border-color .5s ease;
+}
+
+.chip span:hover{
+    border-color:var(--ink);
+}
+
+.chip input:checked + span{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+}
+
+.chip input:focus-visible + span{
+    outline:1px solid var(--moss);
+    outline-offset:3px;
+}
+
+.hero-cta{
+    display:inline-flex;
+    margin-top:18px;
+    font-size:19px;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer{
@@ -699,8 +902,27 @@ a{
 }
 
 .section-head .aside,
-.approach-intro p{
+.approach-intro p,
+.appt-intro p{
     grid-column:1;
+}
+
+.services{
+    grid-template-columns:1fr;
+    gap:56px;
+}
+
+.service:nth-child(n){
+    margin-top:0;
+}
+
+.appt-intro{
+    grid-template-columns:1fr;
+}
+
+.steps{
+    grid-template-columns:1fr 1fr;
+    row-gap:36px;
 }
 
 .approach-intro,
@@ -761,14 +983,14 @@ a{
 <body>
 
 <header class="site-header" id="top">
-    <span class="label place">Adelaide, South Australia</span>
+    <span class="label place">Adelaide &middot; By appointment only</span>
     <a class="mini-logo" href="#top" aria-label="PIK Studio, back to top">
         <img src="assets/logo.PNG" alt="">
     </a>
     <nav class="site-nav" aria-label="Main">
+        <a class="link" href="#services">Services</a>
         <a class="link" href="#work">Work</a>
         <a class="link nav-approach" href="#approach">Approach</a>
-        <a class="link" href="#instagram">Instagram</a>
         <a class="link" href="#enquire">Let's talk</a>
     </nav>
 </header>
@@ -781,7 +1003,10 @@ a{
             <img src="assets/logo.PNG" alt="PIK Studio">
         </div>
         <div class="hero-line">
-            <p class="label">(Designer flowers)<br>Zero foam. Zero plastic.</p>
+            <div>
+                <p class="label">(Designer flowers)<br>Weddings &middot; Events &middot; Gifts<br>By appointment only</p>
+                <a class="arrow-link link hero-cta" href="#enquire">Book a consult <span class="arr">&rarr;</span></a>
+            </div>
             <h1>Flowers,<br>minus <em>the plastic.</em></h1>
         </div>
     </section>
@@ -808,13 +1033,69 @@ a{
         </div>
     </div>
 
+    <!-- ===== Services =====
+         Photos: assets/services/weddings.jpg, events.jpg, gifts.jpg -->
+    <section class="section" id="services">
+        <div class="section-head reveal">
+            <span class="label">(01)</span>
+            <h2>What we do</h2>
+            <p class="aside">Three things, done properly.</p>
+        </div>
+
+        <div class="services">
+
+            <article class="service reveal">
+                <div class="service-frame">
+                    <img src="assets/services/weddings.jpg" alt="Wedding flowers by PIK Studio" loading="lazy">
+                    <span class="placeholder">Weddings</span>
+                </div>
+                <div class="service-head">
+                    <span class="label">i.</span>
+                    <h3>Weddings</h3>
+                </div>
+                <p class="lede">From the bouquet to the last table standing.</p>
+                <p class="detail">Full-service wedding florals: bridal party, ceremony, reception and styling. We design around you, your venue and the season, then install on the day and pack it all down after.</p>
+                <a class="arrow-link link" href="#enquire" data-occasion="Wedding">Plan your wedding <span class="arr">&rarr;</span></a>
+            </article>
+
+            <article class="service reveal">
+                <div class="service-frame">
+                    <img src="assets/services/events.jpg" alt="Event floral installation by PIK Studio" loading="lazy">
+                    <span class="placeholder">Events</span>
+                </div>
+                <div class="service-head">
+                    <span class="label">ii.</span>
+                    <h3>Events</h3>
+                </div>
+                <p class="lede">Big rooms, long tables, things hanging from the ceiling.</p>
+                <p class="detail">Large-scale florals and installations for launches, dinners, brand moments and celebrations. Go as big as you like. It's still foam-free.</p>
+                <a class="arrow-link link" href="#enquire" data-occasion="Event">Talk events <span class="arr">&rarr;</span></a>
+            </article>
+
+            <article class="service reveal">
+                <div class="service-frame">
+                    <img src="assets/services/gifts.jpg" alt="Gift flowers by PIK Studio" loading="lazy">
+                    <span class="placeholder">Gifts</span>
+                </div>
+                <div class="service-head">
+                    <span class="label">iii.</span>
+                    <h3>Gifts</h3>
+                </div>
+                <p class="lede">Made to order. Wrapped in paper, never plastic.</p>
+                <p class="detail">Bouquets and vessel arrangements for birthdays, thank-yous, sorrys and just-becauses. Tell us who it's for and we'll make it feel like them.</p>
+                <a class="arrow-link link" href="#enquire" data-occasion="Gift">Order a gift <span class="arr">&rarr;</span></a>
+            </article>
+
+        </div>
+    </section>
+
     <!-- ===== Selected work =====
          To add your photos: put them in assets/work/ named 01.jpg, 02.jpg ... 06.jpg
          (or change the src below). Edit the titles and labels to suit each piece.
          Copy a <figure> block to add more — the layout repeats every six. -->
     <section class="section" id="work">
         <div class="section-head reveal">
-            <span class="label">(01)</span>
+            <span class="label">(02)</span>
             <h2>Selected work</h2>
             <p class="aside">A few we're proud of.</p>
         </div>
@@ -904,7 +1185,7 @@ a{
     <!-- ===== How we work (sustainability) — edit the wording to match exactly what you do ===== -->
     <section class="section" id="approach">
         <div class="section-head reveal">
-            <span class="label">(02)</span>
+            <span class="label">(03)</span>
             <h2>The fine print</h2>
             <p class="aside">aka why we do things the long way.</p>
         </div>
@@ -945,12 +1226,48 @@ a{
         </ol>
     </section>
 
+    <!-- ===== By appointment ===== -->
+    <section class="section" id="appointment">
+        <div class="section-head reveal">
+            <span class="label">(04)</span>
+            <h2>By appointment only</h2>
+            <p class="aside">No walk-ins. All the attention.</p>
+        </div>
+
+        <div class="appt-intro reveal">
+            <p>The studio runs on appointments, so when you're with us, you've got us. No queue, no rush, no one-size-fits-all.</p>
+        </div>
+
+        <ol class="steps">
+            <li class="step reveal">
+                <span class="num">01</span>
+                <h3>Enquire</h3>
+                <p>Drop us the date, the occasion and the vibe using the form below.</p>
+            </li>
+            <li class="step reveal">
+                <span class="num">02</span>
+                <h3>Consult</h3>
+                <p>We book a time to talk it through, in the studio or on a call. Bring the Pinterest board. All of it.</p>
+            </li>
+            <li class="step reveal">
+                <span class="num">03</span>
+                <h3>Design</h3>
+                <p>You get a design proposal and a clear quote. No surprises, no hidden extras.</p>
+            </li>
+            <li class="step reveal">
+                <span class="num">04</span>
+                <h3>The day</h3>
+                <p>We deliver, install and pack down, and take everything back with us. Nothing left behind.</p>
+            </li>
+        </ol>
+    </section>
+
     <!-- ===== Instagram =====
          Add post links to INSTAGRAM_POSTS in the script at the bottom of this file
          and they'll appear here as embeds. Until then, a follow panel shows. -->
     <section class="section" id="instagram">
         <div class="section-head reveal">
-            <span class="label">(03)</span>
+            <span class="label">(05)</span>
             <h2>On the grid</h2>
             <p class="aside">The day-to-day lives here.</p>
         </div>
@@ -975,9 +1292,9 @@ a{
         <div class="enquire-inner">
 
             <div class="reveal">
-                <span class="label">(04)</span>
-                <h2>Got something<br>in mind?</h2>
-                <p class="enquire-intro">A wedding, an event, a birthday, a sorry, or just because. Send us the vibe and we'll take it from there.</p>
+                <span class="label">(06)</span>
+                <h2>Book a<br>consult.</h2>
+                <p class="enquire-intro">Weddings, events or a gift that actually lands. Tell us what you're planning and we'll come back to you to lock in a time.</p>
 
                 <ul class="contact-list">
                     <li>
@@ -990,7 +1307,7 @@ a{
                     </li>
                     <li>
                         <span class="label">Studio</span>
-                        <span>Adelaide, South Australia</span>
+                        <span>Adelaide, by appointment only</span>
                     </li>
                 </ul>
             </div>
@@ -1020,8 +1337,23 @@ a{
                             <input type="tel" id="mobile" name="mobile" autocomplete="tel" required>
                         </div>
 
+                        <fieldset class="chips">
+                            <legend class="label">What's it for?</legend>
+                            <div class="chip-row">
+                                <label class="chip"><input type="radio" name="occasion" value="Wedding" required><span>Wedding</span></label>
+                                <label class="chip"><input type="radio" name="occasion" value="Event"><span>Event</span></label>
+                                <label class="chip"><input type="radio" name="occasion" value="Gift"><span>Gift</span></label>
+                                <label class="chip"><input type="radio" name="occasion" value="Something else"><span>Something else</span></label>
+                            </div>
+                        </fieldset>
+
                         <div class="form-group">
-                            <label class="label" for="enquiry">What are you thinking?</label>
+                            <label class="label" for="when">Date &amp; venue, if you know them</label>
+                            <input type="text" id="when" name="when">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="label" for="enquiry">Tell us the vibe</label>
                             <textarea id="enquiry" name="enquiry" rows="4" required></textarea>
                         </div>
 
@@ -1059,7 +1391,7 @@ a{
     </div>
     <div class="footer-row label">
         <span>&copy; <span id="year"></span> PIK Studio</span>
-        <span>Zero foam &middot; Zero plastic &middot; Next to no waste</span>
+        <span>By appointment only &middot; Zero foam &middot; Zero plastic</span>
         <a class="link" href="https://www.instagram.com/pikstudio.adl" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a class="link" href="#top">Back to top</a>
     </div>
@@ -1095,8 +1427,16 @@ const INSTAGRAM_POSTS = [
     }, { rootMargin:'0px 0px -8% 0px' });
     document.querySelectorAll('.reveal').forEach(function(el){ revealer.observe(el); });
 
-    // Portfolio: show a numbered placeholder until the photo exists
-    document.querySelectorAll('.piece-frame img').forEach(function(img){
+    // Service links pre-select the occasion in the form
+    document.querySelectorAll('[data-occasion]').forEach(function(link){
+        link.addEventListener('click', function(){
+            const radio = document.querySelector('[name="occasion"][value="' + link.dataset.occasion + '"]');
+            if (radio) radio.checked = true;
+        });
+    });
+
+    // Show a placeholder until the photo exists
+    document.querySelectorAll('.piece-frame img, .service-frame img').forEach(function(img){
         function empty(){ img.parentElement.classList.add('is-empty'); }
         if (img.complete && img.naturalWidth === 0) empty();
         img.addEventListener('error', empty);
@@ -1152,7 +1492,13 @@ const INSTAGRAM_POSTS = [
 
         const formData = new FormData(form);
         // Web3Forms expects a single "message" field — combine mobile + enquiry into it.
-        formData.set('message', 'Mobile: ' + form.mobile.value.trim() + '\n\n' + form.enquiry.value.trim());
+        const occasion = (form.querySelector('[name="occasion"]:checked') || {}).value || '';
+        formData.set('message',
+            'For: ' + occasion + '\n' +
+            'Date & venue: ' + (form.when.value.trim() || '-') + '\n' +
+            'Mobile: ' + form.mobile.value.trim() + '\n\n' +
+            form.enquiry.value.trim());
+        formData.set('subject', 'New ' + occasion.toLowerCase() + ' enquiry from PIK Studio website');
 
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
