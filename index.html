@@ -6,7 +6,7 @@
 
 <title>PIK STUDIO — Designer Flowers, Adelaide</title>
 
-<meta name="description" content="PIK Studio — sustainable designer flowers in Adelaide. Foam-free, plastic-free and low waste.">
+<meta name="description" content="PIK Studio — designer flowers in Adelaide, minus the plastic. Zero foam, next to no waste.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,16 +16,16 @@
 /* ======================================================
    PIK STUDIO
    Type:   logo (Impact-style, bold)  ·  Bodoni Moda italic  ·  Helvetica Neue for small labels
-   Colour: warm paper, ink, one quiet moss accent
+   Colour: near-black, warm bone, one sage accent; one light band for contrast
    ====================================================== */
 
 :root{
-    --paper:#f3efe7;
-    --paper-deep:#e8e1d4;
-    --ink:#0d0d0d;
-    --ink-soft:#5b5750;
-    --line:rgba(13,13,13,0.16);
-    --moss:#3e4a2b;
+    --paper:#0e0d0b;
+    --paper-deep:#1a1815;
+    --ink:#efe9dd;
+    --ink-soft:#9a948a;
+    --line:rgba(239,233,221,0.14);
+    --moss:#aebb8c;
 
     --serif:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
     --sans:"Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -129,7 +129,8 @@ a{
 
 .mini-logo img{
     width:100%;
-    mix-blend-mode:multiply;
+    filter:invert(1);
+    mix-blend-mode:screen;
 }
 
 .site-nav{
@@ -158,7 +159,8 @@ a{
 
 .hero-logo img{
     width:100%;
-    mix-blend-mode:multiply;
+    filter:invert(1);
+    mix-blend-mode:screen;
     opacity:0;
     animation:rise 1.4s var(--ease) .15s forwards;
 }
@@ -300,7 +302,7 @@ a{
     align-items:center;
     justify-content:center;
     font-size:clamp(60px,9vw,140px);
-    color:rgba(13,13,13,0.12);
+    color:rgba(239,233,221,0.1);
 }
 
 .piece-frame.is-empty img{ display:none; }
@@ -350,7 +352,7 @@ a{
 }
 
 .statement .label{
-    color:rgba(243,239,231,0.55);
+    color:rgba(14,13,11,0.5);
     padding-top:12px;
 }
 
@@ -363,7 +365,7 @@ a{
     margin-top:1em;
     font-size:clamp(18px,1.6vw,22px);
     line-height:1.5;
-    color:rgba(243,239,231,0.7);
+    color:rgba(14,13,11,0.68);
     max-width:34em;
 }
 
@@ -399,7 +401,7 @@ a{
 .principle .num{
     font-size:clamp(40px,4.4vw,64px);
     line-height:1;
-    color:rgba(13,13,13,0.22);
+    color:rgba(239,233,221,0.22);
     transition:color .6s ease;
 }
 
@@ -542,7 +544,7 @@ a{
 .form-group textarea{
     width:100%;
     border:none;
-    border-bottom:1px solid rgba(13,13,13,0.35);
+    border-bottom:1px solid rgba(239,233,221,0.3);
     border-radius:0;
     padding:8px 0 10px;
     font-family:var(--serif);
@@ -620,7 +622,8 @@ a{
 
 .footer-logo img{
     width:100%;
-    mix-blend-mode:multiply;
+    filter:invert(1);
+    mix-blend-mode:screen;
 }
 
 .footer-row{
@@ -778,8 +781,8 @@ a{
             <img src="assets/logo.PNG" alt="PIK Studio">
         </div>
         <div class="hero-line">
-            <p class="label">(Designer flowers)<br>Foam-free &middot; Plastic-free &middot; Low waste</p>
-            <h1>Flowers with a <em>point of view.</em></h1>
+            <p class="label">(Designer flowers)<br>Zero foam. Zero plastic.</p>
+            <h1>Flowers,<br>minus <em>the plastic.</em></h1>
         </div>
     </section>
 
@@ -813,7 +816,7 @@ a{
         <div class="section-head reveal">
             <span class="label">(01)</span>
             <h2>Selected work</h2>
-            <p class="aside">Weddings, events, editorial &amp; the everyday.</p>
+            <p class="aside">A few we're proud of.</p>
         </div>
 
         <div class="work-grid">
@@ -824,7 +827,7 @@ a{
                     <span class="placeholder">01</span>
                 </div>
                 <figcaption>
-                    <span class="title">A spring wedding</span>
+                    <span class="title">someone's very good wedding</span>
                     <span class="label">Wedding</span>
                 </figcaption>
             </figure>
@@ -835,7 +838,7 @@ a{
                     <span class="placeholder">02</span>
                 </div>
                 <figcaption>
-                    <span class="title">Hand-tied, loosely</span>
+                    <span class="title">hand-tied, loosely</span>
                     <span class="label">Bouquet</span>
                 </figcaption>
             </figure>
@@ -846,7 +849,7 @@ a{
                     <span class="placeholder">03</span>
                 </div>
                 <figcaption>
-                    <span class="title">Still life, no. 3</span>
+                    <span class="title">still life, no. 3</span>
                     <span class="label">Studio</span>
                 </figcaption>
             </figure>
@@ -857,7 +860,7 @@ a{
                     <span class="placeholder">04</span>
                 </div>
                 <figcaption>
-                    <span class="title">The long table</span>
+                    <span class="title">the long table</span>
                     <span class="label">Event</span>
                 </figcaption>
             </figure>
@@ -868,7 +871,7 @@ a{
                     <span class="placeholder">05</span>
                 </div>
                 <figcaption>
-                    <span class="title">For the page</span>
+                    <span class="title">for the camera</span>
                     <span class="label">Editorial</span>
                 </figcaption>
             </figure>
@@ -879,7 +882,7 @@ a{
                     <span class="placeholder">06</span>
                 </div>
                 <figcaption>
-                    <span class="title">This week's vase</span>
+                    <span class="title">tuesday's vase</span>
                     <span class="label">Everyday</span>
                 </figcaption>
             </figure>
@@ -890,10 +893,10 @@ a{
     <!-- ===== Statement (edit freely) ===== -->
     <section class="statement">
         <div class="statement-inner reveal">
-            <span class="label">The studio</span>
+            <span class="label">The deal</span>
             <div>
-                <p>Beautiful flowers shouldn't cost the earth. Every arrangement we make is designed to leave as little behind as possible.</p>
-                <p>PIK Studio designs flowers with shape and character, without the floral foam, plastic wrap and waste the industry usually relies on. Tell us about the occasion and we'll take it from there.</p>
+                <p>No floral foam. No cellophane. Nothing that ends up in landfill by Friday.</p>
+                <p>Just seasonal stems, natural materials and arrangements that look like they grew that way. Good for your table, better for everything else.</p>
             </div>
         </div>
     </section>
@@ -902,41 +905,41 @@ a{
     <section class="section" id="approach">
         <div class="section-head reveal">
             <span class="label">(02)</span>
-            <h2>How we work</h2>
-            <p class="aside">Green from stem to bin.</p>
+            <h2>The fine print</h2>
+            <p class="aside">aka why we do things the long way.</p>
         </div>
 
         <div class="approach-intro reveal">
-            <p>Sustainability isn't an add-on here. It shapes how every piece is built, wrapped, delivered and cleared away.</p>
+            <p>Floristry has a plastic problem. We'd rather not be part of it.</p>
         </div>
 
         <ol class="principles">
             <li class="principle reveal">
                 <span class="num">i.</span>
                 <div class="principle-body">
-                    <h3>No microplastics</h3>
-                    <p>No floral foam, ever. Arrangements are held with reusable, natural mechanics instead of single-use plastics that break down into the soil and water.</p>
+                    <h3>Zero foam, zero microplastics</h3>
+                    <p>Floral foam breaks down into microplastics that stick around in soil and water basically forever. So we don't use it. Ever.</p>
                 </div>
             </li>
             <li class="principle reveal">
                 <span class="num">ii.</span>
                 <div class="principle-body">
-                    <h3>Minimal waste</h3>
-                    <p>We buy to the brief, use as much of every stem as we can, and keep what's left out of landfill.</p>
+                    <h3>Next to no waste</h3>
+                    <p>We order for your brief, use as much of every stem as we can, and keep the rest out of landfill.</p>
                 </div>
             </li>
             <li class="principle reveal">
                 <span class="num">iii.</span>
                 <div class="principle-body">
-                    <h3>Eco-friendly materials</h3>
-                    <p>Paper, cotton, string and reusable vessels in place of cellophane, ribbon plastics and throwaway packaging.</p>
+                    <h3>Wrapped in better stuff</h3>
+                    <p>Paper, string, cloth and vessels you'll actually want to keep. Nothing you'll feel weird about binning.</p>
                 </div>
             </li>
             <li class="principle reveal">
                 <span class="num">iv.</span>
                 <div class="principle-body">
-                    <h3>Sustainable by default</h3>
-                    <p>Seasonal flowers and considered sourcing, so the most beautiful option is also the kinder one.</p>
+                    <h3>Seasonal, always</h3>
+                    <p>We work with what's growing right now. It looks better, lasts longer and doesn't need a passport.</p>
                 </div>
             </li>
         </ol>
@@ -948,17 +951,17 @@ a{
     <section class="section" id="instagram">
         <div class="section-head reveal">
             <span class="label">(03)</span>
-            <h2>From the studio</h2>
-            <p class="aside">Lately, on Instagram.</p>
+            <h2>On the grid</h2>
+            <p class="aside">The day-to-day lives here.</p>
         </div>
 
         <div class="insta-grid" id="instaGrid" hidden></div>
 
         <div class="insta-follow reveal" id="instaFollow">
-            <span class="label">Follow along</span>
+            <span class="label">Come say hi</span>
             <div>
                 <a class="handle link" href="https://www.instagram.com/pikstudio.adl" target="_blank" rel="noopener noreferrer">@pikstudio.adl</a>
-                <p>New work, studio days and whatever's in season.</p>
+                <p>New work, studio chaos and whatever's in season this week.</p>
             </div>
         </div>
 
@@ -973,8 +976,8 @@ a{
 
             <div class="reveal">
                 <span class="label">(04)</span>
-                <h2>Let's talk<br>flowers.</h2>
-                <p class="enquire-intro">Weddings, events, gifts or something for the table? Tell us a little about what you have in mind and we'll be in touch shortly.</p>
+                <h2>Got something<br>in mind?</h2>
+                <p class="enquire-intro">A wedding, an event, a birthday, a sorry, or just because. Send us the vibe and we'll take it from there.</p>
 
                 <ul class="contact-list">
                     <li>
@@ -1018,7 +1021,7 @@ a{
                         </div>
 
                         <div class="form-group">
-                            <label class="label" for="enquiry">Your enquiry</label>
+                            <label class="label" for="enquiry">What are you thinking?</label>
                             <textarea id="enquiry" name="enquiry" rows="4" required></textarea>
                         </div>
 
@@ -1029,7 +1032,7 @@ a{
 
                         <!-- hCaptcha (spam protection) — https://docs.web3forms.com/getting-started/customizations/spam-protection/hcaptcha -->
                         <div class="captcha-wrap">
-                            <div class="h-captcha" data-captcha="true"></div>
+                            <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
                         </div>
 
                         <p class="form-error" id="formError" hidden></p>
@@ -1040,8 +1043,8 @@ a{
                 </div>
 
                 <div id="thankYouView" class="thank-you" hidden>
-                    <h3>Thank you.</h3>
-                    <p>We've received your message and will be in touch as soon as we can.</p>
+                    <h3>Got it.</h3>
+                    <p>Your message is in. We'll be in touch soon.</p>
                 </div>
             </div>
 
@@ -1056,7 +1059,7 @@ a{
     </div>
     <div class="footer-row label">
         <span>&copy; <span id="year"></span> PIK Studio</span>
-        <span>Foam-free &middot; Plastic-free &middot; Low waste</span>
+        <span>Zero foam &middot; Zero plastic &middot; Next to no waste</span>
         <a class="link" href="https://www.instagram.com/pikstudio.adl" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a class="link" href="#top">Back to top</a>
     </div>
