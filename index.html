@@ -6,7 +6,7 @@
 
 <title>PIK STUDIO — Designer Flowers, Adelaide</title>
 
-<meta name="description" content="PIK Studio — designer flowers in Adelaide. Weddings, events, editorial and the everyday.">
+<meta name="description" content="PIK Studio — sustainable designer flowers in Adelaide. Foam-free, plastic-free and low waste.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 /* ======================================================
    PIK STUDIO
    Type:   logo (Impact-style, bold)  ·  Bodoni Moda italic  ·  Helvetica Neue for small labels
-   Colour: warm paper, ink, one quiet petal accent
+   Colour: warm paper, ink, one quiet moss accent
    ====================================================== */
 
 :root{
@@ -25,7 +25,7 @@
     --ink:#0d0d0d;
     --ink-soft:#5b5750;
     --line:rgba(13,13,13,0.16);
-    --petal:#7b2a2a;
+    --moss:#3e4a2b;
 
     --serif:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
     --sans:"Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -103,9 +103,7 @@ a{
     grid-template-columns:1fr auto 1fr;
     align-items:center;
     padding:16px var(--gutter);
-    background:rgba(243,239,231,0.86);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
+    background:var(--paper);
     border-bottom:1px solid transparent;
     transition:border-color .5s ease;
 }
@@ -189,7 +187,7 @@ a{
 }
 
 .hero-line h1 em{
-    color:var(--petal);
+    color:var(--moss);
 }
 
 @keyframes rise{
@@ -332,7 +330,7 @@ a{
 
 .piece:hover figcaption .title{
     transform:translateX(6px);
-    color:var(--petal);
+    color:var(--moss);
 }
 
 /* ---------- Statement ---------- */
@@ -367,6 +365,70 @@ a{
     line-height:1.5;
     color:rgba(243,239,231,0.7);
     max-width:34em;
+}
+
+/* ---------- Approach ---------- */
+
+.approach-intro{
+    display:grid;
+    grid-template-columns:1fr 2.2fr;
+    gap:24px;
+    margin-bottom:clamp(40px,6vw,80px);
+}
+
+.approach-intro p{
+    grid-column:2;
+    font-size:clamp(24px,2.6vw,36px);
+    line-height:1.25;
+    max-width:24em;
+}
+
+.principles{
+    list-style:none;
+    border-top:1px solid var(--line);
+}
+
+.principle{
+    display:grid;
+    grid-template-columns:1fr 2.2fr;
+    gap:24px;
+    padding:clamp(26px,3.4vw,44px) 0;
+    border-bottom:1px solid var(--line);
+}
+
+.principle .num{
+    font-size:clamp(40px,4.4vw,64px);
+    line-height:1;
+    color:rgba(13,13,13,0.22);
+    transition:color .6s ease;
+}
+
+.principle-body{
+    display:grid;
+    grid-template-columns:1fr 1.15fr;
+    gap:24px;
+    align-items:baseline;
+}
+
+.principle h3{
+    font-weight:400;
+    font-size:clamp(28px,3vw,42px);
+    line-height:1.05;
+    transition:transform .7s var(--ease);
+}
+
+.principle p{
+    font-size:18px;
+    line-height:1.55;
+    color:var(--ink-soft);
+}
+
+.principle:hover .num{
+    color:var(--moss);
+}
+
+.principle:hover h3{
+    transform:translateX(6px);
 }
 
 /* ---------- Instagram ---------- */
@@ -499,7 +561,7 @@ a{
 }
 
 .form-error{
-    color:var(--petal);
+    color:var(--moss);
     font-size:17px;
     margin-bottom:18px;
 }
@@ -618,6 +680,11 @@ a{
 
 .site-nav{
     font-size:16px;
+    gap:16px;
+}
+
+.site-nav .nav-approach{
+    display:none;
 }
 
 .hero-line,
@@ -628,8 +695,23 @@ a{
     grid-template-columns:1fr;
 }
 
-.section-head .aside{
+.section-head .aside,
+.approach-intro p{
     grid-column:1;
+}
+
+.approach-intro,
+.principle,
+.principle-body{
+    grid-template-columns:1fr;
+}
+
+.principle{
+    gap:10px;
+}
+
+.principle-body{
+    gap:12px;
 }
 
 .work-grid{
@@ -682,6 +764,7 @@ a{
     </a>
     <nav class="site-nav" aria-label="Main">
         <a class="link" href="#work">Work</a>
+        <a class="link nav-approach" href="#approach">Approach</a>
         <a class="link" href="#instagram">Instagram</a>
         <a class="link" href="#enquire">Let's talk</a>
     </nav>
@@ -695,7 +778,7 @@ a{
             <img src="assets/logo.PNG" alt="PIK Studio">
         </div>
         <div class="hero-line">
-            <p class="label">(Designer flowers)</p>
+            <p class="label">(Designer flowers)<br>Foam-free &middot; Plastic-free &middot; Low waste</p>
             <h1>Flowers with a <em>point of view.</em></h1>
         </div>
     </section>
@@ -804,15 +887,59 @@ a{
         </div>
     </section>
 
-    <!-- ===== Statement (rewrite in your own words) ===== -->
+    <!-- ===== Statement (edit freely) ===== -->
     <section class="statement">
         <div class="statement-inner reveal">
             <span class="label">The studio</span>
             <div>
-                <p>Every arrangement starts with the season: what's blooming, what's wild, and what won't come round again.</p>
-                <p>PIK Studio designs flowers for people who want something with a little more shape and character. Tell us about the occasion and we'll take it from there.</p>
+                <p>Beautiful flowers shouldn't cost the earth. Every arrangement we make is designed to leave as little behind as possible.</p>
+                <p>PIK Studio designs flowers with shape and character, without the floral foam, plastic wrap and waste the industry usually relies on. Tell us about the occasion and we'll take it from there.</p>
             </div>
         </div>
+    </section>
+
+    <!-- ===== How we work (sustainability) — edit the wording to match exactly what you do ===== -->
+    <section class="section" id="approach">
+        <div class="section-head reveal">
+            <span class="label">(02)</span>
+            <h2>How we work</h2>
+            <p class="aside">Green from stem to bin.</p>
+        </div>
+
+        <div class="approach-intro reveal">
+            <p>Sustainability isn't an add-on here. It shapes how every piece is built, wrapped, delivered and cleared away.</p>
+        </div>
+
+        <ol class="principles">
+            <li class="principle reveal">
+                <span class="num">i.</span>
+                <div class="principle-body">
+                    <h3>No microplastics</h3>
+                    <p>No floral foam, ever. Arrangements are held with reusable, natural mechanics instead of single-use plastics that break down into the soil and water.</p>
+                </div>
+            </li>
+            <li class="principle reveal">
+                <span class="num">ii.</span>
+                <div class="principle-body">
+                    <h3>Minimal waste</h3>
+                    <p>We buy to the brief, use as much of every stem as we can, and keep what's left out of landfill.</p>
+                </div>
+            </li>
+            <li class="principle reveal">
+                <span class="num">iii.</span>
+                <div class="principle-body">
+                    <h3>Eco-friendly materials</h3>
+                    <p>Paper, cotton, string and reusable vessels in place of cellophane, ribbon plastics and throwaway packaging.</p>
+                </div>
+            </li>
+            <li class="principle reveal">
+                <span class="num">iv.</span>
+                <div class="principle-body">
+                    <h3>Sustainable by default</h3>
+                    <p>Seasonal flowers and considered sourcing, so the most beautiful option is also the kinder one.</p>
+                </div>
+            </li>
+        </ol>
     </section>
 
     <!-- ===== Instagram =====
@@ -820,7 +947,7 @@ a{
          and they'll appear here as embeds. Until then, a follow panel shows. -->
     <section class="section" id="instagram">
         <div class="section-head reveal">
-            <span class="label">(02)</span>
+            <span class="label">(03)</span>
             <h2>From the studio</h2>
             <p class="aside">Lately, on Instagram.</p>
         </div>
@@ -845,7 +972,7 @@ a{
         <div class="enquire-inner">
 
             <div class="reveal">
-                <span class="label">(03)</span>
+                <span class="label">(04)</span>
                 <h2>Let's talk<br>flowers.</h2>
                 <p class="enquire-intro">Weddings, events, gifts or something for the table? Tell us a little about what you have in mind and we'll be in touch shortly.</p>
 
@@ -929,6 +1056,7 @@ a{
     </div>
     <div class="footer-row label">
         <span>&copy; <span id="year"></span> PIK Studio</span>
+        <span>Foam-free &middot; Plastic-free &middot; Low waste</span>
         <a class="link" href="https://www.instagram.com/pikstudio.adl" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a class="link" href="#top">Back to top</a>
     </div>
