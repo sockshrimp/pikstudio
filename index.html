@@ -148,6 +148,7 @@ a{
 
 .hero{
     padding:clamp(28px,5vh,60px) var(--gutter) clamp(50px,9vh,110px);
+    border-bottom:1px solid var(--line);
 }
 
 .hero-logo{
@@ -195,38 +196,6 @@ a{
 @keyframes rise{
     from{opacity:0; transform:translateY(14px);}
     to{opacity:1; transform:none;}
-}
-
-/* ---------- Flower ticker ---------- */
-
-.ticker{
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    overflow:hidden;
-    white-space:nowrap;
-    padding:14px 0;
-    font-size:clamp(20px,2.4vw,30px);
-}
-
-.ticker-track{
-    display:inline-flex;
-    animation:drift 70s linear infinite;
-}
-
-.ticker-track span{
-    padding:0 0.6em;
-}
-
-.ticker-track span:nth-child(even){
-    font-family:var(--sans);
-    font-style:normal;
-    font-size:0.4em;
-    align-self:center;
-    color:var(--ink-soft);
-}
-
-@keyframes drift{
-    to{transform:translateX(-50%);}
 }
 
 /* ---------- Section frame ---------- */
@@ -1010,28 +979,6 @@ a{
             <h1>Flowers,<br>minus <em>the plastic.</em></h1>
         </div>
     </section>
-
-    <!-- ===== Ticker (edit the flower names freely) ===== -->
-    <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-            <span>Ranunculus</span><span>●</span>
-            <span>Fritillaria</span><span>●</span>
-            <span>Hellebore</span><span>●</span>
-            <span>Garden roses</span><span>●</span>
-            <span>Sweet pea</span><span>●</span>
-            <span>Anemone</span><span>●</span>
-            <span>Clematis</span><span>●</span>
-            <span>Japanese maple</span><span>●</span>
-            <span>Ranunculus</span><span>●</span>
-            <span>Fritillaria</span><span>●</span>
-            <span>Hellebore</span><span>●</span>
-            <span>Garden roses</span><span>●</span>
-            <span>Sweet pea</span><span>●</span>
-            <span>Anemone</span><span>●</span>
-            <span>Clematis</span><span>●</span>
-            <span>Japanese maple</span><span>●</span>
-        </div>
-    </div>
 
     <!-- ===== Services =====
          Photos: assets/services/weddings.jpg, events.jpg, gifts.jpg -->
