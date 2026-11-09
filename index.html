@@ -1,12 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PIK STUDIO — Designer Flowers, Adelaide</title>
+<title>PIK Studio | Sustainable Florist Adelaide · Weddings, Events &amp; Gifts</title>
 
-<meta name="description" content="PIK Studio — designer flowers for weddings, events and gifts in Adelaide. By appointment only. Zero foam, zero plastic.">
+<meta name="description" content="PIK Studio is a sustainable, by-appointment florist in Adelaide designing wedding flowers, large-scale event installations and gift bouquets. Zero floral foam, zero plastic.">
+<link rel="canonical" href="https://pikstudio.com.au/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0e0d0b">
+<meta name="geo.region" content="AU-SA">
+<meta name="geo.placename" content="Adelaide">
+
+<!-- Social sharing previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PIK Studio">
+<meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://pikstudio.com.au/">
+<meta property="og:title" content="PIK Studio | Sustainable Florist Adelaide">
+<meta property="og:description" content="Designer flowers for weddings, events and gifts. By appointment only. Zero foam, zero plastic.">
+<meta property="og:image" content="https://pikstudio.com.au/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PIK Studio logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PIK Studio | Sustainable Florist Adelaide">
+<meta name="twitter:description" content="Designer flowers for weddings, events and gifts. By appointment only. Zero foam, zero plastic.">
+<meta name="twitter:image" content="https://pikstudio.com.au/assets/og-image.jpg">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/icon-512.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Business details for Google (structured data) -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "@id": "https://pikstudio.com.au/#business",
+    "name": "PIK Studio",
+    "url": "https://pikstudio.com.au/",
+    "logo": "https://pikstudio.com.au/assets/icon-512.png",
+    "image": "https://pikstudio.com.au/assets/og-image.jpg",
+    "description": "Sustainable, by-appointment florist in Adelaide designing wedding flowers, large-scale event installations and gift bouquets. Zero floral foam, zero plastic, next to no waste.",
+    "email": "enquires@pikstudio.com.au",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Adelaide",
+        "addressRegion": "SA",
+        "addressCountry": "AU"
+    },
+    "areaServed": { "@type": "City", "name": "Adelaide" },
+    "sameAs": ["https://www.instagram.com/pikstudio.adl"],
+    "knowsAbout": ["Wedding flowers", "Event floral installations", "Gift bouquets", "Sustainable floristry", "Foam-free floristry"],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Floral services",
+        "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wedding flowers", "areaServed": "Adelaide" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event floral installations", "areaServed": "Adelaide" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gift flowers and bouquets", "areaServed": "Adelaide" } }
+        ]
+    }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +115,7 @@ body{
 img{
     display:block;
     max-width:100%;
+    height:auto;
 }
 
 a{
@@ -91,6 +150,15 @@ a{
 .link:focus-visible{
     background-size:100% 1px;
     outline:none;
+}
+
+.sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    white-space:nowrap;
 }
 
 /* ---------- Header ---------- */
@@ -956,7 +1024,7 @@ a{
 <header class="site-header" id="top">
     <span class="label place">Adelaide &middot; By appointment only</span>
     <a class="mini-logo" href="#top" aria-label="PIK Studio, back to top">
-        <img src="assets/logo.PNG" alt="">
+        <img src="assets/logo.PNG" alt="" width="1600" height="800">
     </a>
     <nav class="site-nav" aria-label="Main">
         <a class="link" href="#services">Services</a>
@@ -971,14 +1039,14 @@ a{
     <!-- ===== Hero ===== -->
     <section class="hero">
         <div class="hero-logo">
-            <img src="assets/logo.PNG" alt="PIK Studio">
+            <img src="assets/logo.PNG" alt="PIK Studio" width="1600" height="800">
         </div>
         <div class="hero-line">
             <div>
-                <p class="label">(Designer flowers)<br>Weddings &middot; Events &middot; Gifts<br>By appointment only</p>
+                <p class="label">(Sustainable florist, Adelaide)<br>Weddings &middot; Events &middot; Gifts<br>By appointment only</p>
                 <a class="arrow-link link hero-cta" href="#enquire">Book a consult <span class="arr">&rarr;</span></a>
             </div>
-            <h1>Flowers,<br>minus <em>the plastic.</em></h1>
+            <h1><span class="sr-only">PIK Studio, sustainable florist in Adelaide. </span>Flowers,<br>minus <em>the plastic.</em></h1>
         </div>
     </section>
 
@@ -1002,7 +1070,7 @@ a{
                     <h3>Weddings</h3>
                 </div>
                 <p class="lede">From the bouquet to the last table standing.</p>
-                <p class="detail">Full-service wedding florals: bridal party, ceremony, reception and styling. We design around you, your venue and the season, then install on the day and pack it all down after.</p>
+                <p class="detail">Full-service wedding florals across Adelaide: bridal party, ceremony, reception and styling. We design around you, your venue and the season, then install on the day and pack it all down after.</p>
                 <a class="arrow-link link" href="#enquire" data-occasion="Wedding">Plan your wedding <span class="arr">&rarr;</span></a>
             </article>
 
@@ -1016,7 +1084,7 @@ a{
                     <h3>Events</h3>
                 </div>
                 <p class="lede">Big rooms, long tables, things hanging from the ceiling.</p>
-                <p class="detail">Large-scale florals and installations for launches, dinners, brand moments and celebrations. Go as big as you like. It's still foam-free.</p>
+                <p class="detail">Large-scale florals and installations for Adelaide launches, dinners, brand moments and celebrations. Go as big as you like. It's still foam-free.</p>
                 <a class="arrow-link link" href="#enquire" data-occasion="Event">Talk events <span class="arr">&rarr;</span></a>
             </article>
 
@@ -1029,7 +1097,7 @@ a{
                     <span class="label">iii.</span>
                     <h3>Gifts</h3>
                 </div>
-                <p class="lede">Made to order. Wrapped in paper, never plastic.</p>
+                <p class="lede">Made to order in Adelaide. Wrapped in paper, never plastic.</p>
                 <p class="detail">Bouquets and vessel arrangements for birthdays, thank-yous, sorrys and just-becauses. Tell us who it's for and we'll make it feel like them.</p>
                 <a class="arrow-link link" href="#enquire" data-occasion="Gift">Order a gift <span class="arr">&rarr;</span></a>
             </article>
@@ -1330,7 +1398,7 @@ a{
 
 <footer class="site-footer">
     <div class="footer-logo">
-        <img src="assets/logo.PNG" alt="PIK Studio">
+        <img src="assets/logo.PNG" alt="PIK Studio" width="1600" height="800">
     </div>
     <div class="footer-row label">
         <span>&copy; <span id="year"></span> PIK Studio</span>
