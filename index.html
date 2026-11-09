@@ -4,305 +4,668 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PIK STUDIO</title>
+<title>PIK STUDIO — Designer Flowers, Adelaide</title>
 
-<meta name="description" content="PIK Studio — Coming Soon">
+<meta name="description" content="PIK Studio — designer flowers in Adelaide. Weddings, events, editorial and the everyday.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400;1,6..96,500&display=swap" rel="stylesheet">
 
 <style>
+/* ======================================================
+   PIK STUDIO
+   Type:   logo (Impact-style, bold)  ·  Bodoni Moda italic  ·  Helvetica Neue for small labels
+   Colour: warm paper, ink, one quiet petal accent
+   ====================================================== */
+
+:root{
+    --paper:#f3efe7;
+    --paper-deep:#e8e1d4;
+    --ink:#0d0d0d;
+    --ink-soft:#5b5750;
+    --line:rgba(13,13,13,0.16);
+    --petal:#7b2a2a;
+
+    --serif:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+    --sans:"Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    --gutter:clamp(18px, 4vw, 56px);
+    --ease:cubic-bezier(0.22,1,0.36,1);
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
-    height:100%;
-    background:#fff;
-    font-family:Arial, Helvetica, sans-serif;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#000;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-style:italic;
+    font-optical-sizing:auto;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
 }
 
-.container{
-    width:90%;
-    max-width:900px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-}
-
-.logo{
-    width:100%;
-    max-width:700px;
-    margin-bottom:60px;
-}
-
-.logo img{
-    width:100%;
+img{
     display:block;
-    opacity:0;
-    animation:fadeIn 1.2s ease forwards;
-    animation-delay:0.2s;
+    max-width:100%;
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:translateY(0);}
+a{
+    color:inherit;
 }
 
-h1{
-    font-size:clamp(42px,6vw,72px);
-    letter-spacing:8px;
-    font-weight:900;
-    margin-bottom:40px;
+::selection{
+    background:var(--ink);
+    color:var(--paper);
 }
 
-.cta-row{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:16px;
+/* Small upright labels — the quiet counterpoint to the italic */
+.label{
+    font-family:var(--sans);
+    font-style:normal;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
 }
 
-.instagram-btn,
-.talk-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-
+/* Underline that draws in on hover */
+.link{
     text-decoration:none;
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    cursor:pointer;
-
-    border:1.5px solid rgba(0,0,0,0.7);
-    border-radius:50px;
-
-    padding:12px 26px;
-
-    font-weight:400;
-    font-size:19px;
-    letter-spacing:0;
-
-    color:#000;
-    background:transparent;
-
-    transition:
-        border-color .5s ease,
-        background-color .5s ease,
-        letter-spacing .5s ease,
-        transform .5s cubic-bezier(0.22,1,0.36,1),
-        box-shadow .5s ease;
+    background-image:linear-gradient(currentColor,currentColor);
+    background-size:0% 1px;
+    background-repeat:no-repeat;
+    background-position:0 100%;
+    transition:background-size .6s var(--ease), color .4s ease;
 }
 
-.instagram-btn:hover,
-.talk-btn:hover,
-.instagram-btn:focus-visible,
-.talk-btn:focus-visible{
-    border-color:#000;
-    background-color:#faf8f4;
-    letter-spacing:0.02em;
-    transform:translateY(-1px);
-    box-shadow:0 4px 14px rgba(0,0,0,0.04);
+.link:hover,
+.link:focus-visible{
+    background-size:100% 1px;
     outline:none;
 }
 
-.instagram-btn:active,
-.talk-btn:active{
-    transform:translateY(0);
+/* ---------- Header ---------- */
+
+.site-header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    padding:16px var(--gutter);
+    background:rgba(243,239,231,0.86);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid transparent;
+    transition:border-color .5s ease;
 }
 
-.footer{
-    position:fixed;
-    bottom:30px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:13px;
-    color:#777;
-    letter-spacing:2px;
+.site-header.is-scrolled{
+    border-bottom-color:var(--line);
 }
 
-/* ---------- Contact modal ---------- */
-
-dialog.talk-modal{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    margin:0;
-    border:none;
-    border-radius:16px;
-    padding:0;
-    width:90%;
-    max-width:480px;
-    max-height:90vh;
-    box-shadow:0 20px 60px rgba(0,0,0,0.25);
+.site-header .mini-logo{
+    justify-self:center;
+    width:92px;
+    opacity:0;
+    transform:translateY(-4px);
+    transition:opacity .5s ease, transform .5s var(--ease);
+    pointer-events:none;
 }
 
-dialog.talk-modal::backdrop{
-    background:rgba(0,0,0,0.6);
+.site-header.is-scrolled .mini-logo{
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
 }
 
-.modal-card{
-    position:relative;
-    padding:40px 32px;
-    text-align:left;
-    max-height:90vh;
-    overflow-y:auto;
+.mini-logo img{
+    width:100%;
+    mix-blend-mode:multiply;
 }
 
-.modal-close{
-    position:absolute;
-    top:14px;
-    right:14px;
-    width:32px;
-    height:32px;
-    border:none;
-    background:transparent;
-    font-size:24px;
-    line-height:1;
-    cursor:pointer;
-    color:#000;
-}
-
-.modal-card h2{
-    font-size:28px;
-    letter-spacing:2px;
-    margin-bottom:8px;
-}
-
-.modal-subtitle{
-    font-size:14px;
-    color:#555;
-    margin-bottom:24px;
-}
-
-.form-row{
+.site-nav{
+    justify-self:end;
     display:flex;
+    gap:clamp(14px,2.4vw,30px);
+    font-size:17px;
+}
+
+.site-nav a{
+    text-decoration:none;
+}
+
+/* ---------- Hero ---------- */
+
+.hero{
+    padding:clamp(28px,5vh,60px) var(--gutter) clamp(50px,9vh,110px);
+}
+
+.hero-logo{
+    width:100%;
+    max-width:min(1100px, calc((100vh - 440px) * 2));
+    min-width:min(100%, 520px);
+    margin:0 auto;
+}
+
+.hero-logo img{
+    width:100%;
+    mix-blend-mode:multiply;
+    opacity:0;
+    animation:rise 1.4s var(--ease) .15s forwards;
+}
+
+.hero-line{
+    max-width:1100px;
+    margin:clamp(28px,5vw,56px) auto 0;
+    display:grid;
+    grid-template-columns:1fr 2.2fr;
+    gap:24px;
+    align-items:end;
+    opacity:0;
+    animation:rise 1.4s var(--ease) .45s forwards;
+}
+
+.hero-line .label{
+    color:var(--ink-soft);
+    line-height:1.9;
+}
+
+.hero-line h1{
+    font-weight:400;
+    font-size:clamp(38px,6.4vw,88px);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+}
+
+.hero-line h1 em{
+    color:var(--petal);
+}
+
+@keyframes rise{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:none;}
+}
+
+/* ---------- Flower ticker ---------- */
+
+.ticker{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:14px 0;
+    font-size:clamp(20px,2.4vw,30px);
+}
+
+.ticker-track{
+    display:inline-flex;
+    animation:drift 70s linear infinite;
+}
+
+.ticker-track span{
+    padding:0 0.6em;
+}
+
+.ticker-track span:nth-child(even){
+    font-family:var(--sans);
+    font-style:normal;
+    font-size:0.4em;
+    align-self:center;
+    color:var(--ink-soft);
+}
+
+@keyframes drift{
+    to{transform:translateX(-50%);}
+}
+
+/* ---------- Section frame ---------- */
+
+.section{
+    padding:clamp(70px,12vh,150px) var(--gutter);
+}
+
+.section-head{
+    display:grid;
+    grid-template-columns:1fr 2.2fr;
+    gap:24px;
+    align-items:baseline;
+    padding-bottom:18px;
+    margin-bottom:clamp(36px,6vw,70px);
+    border-bottom:1px solid var(--line);
+}
+
+.section-head h2{
+    font-weight:400;
+    font-size:clamp(34px,5vw,64px);
+    line-height:1;
+}
+
+.section-head .aside{
+    grid-column:2;
+    font-size:18px;
+    color:var(--ink-soft);
+    margin-top:10px;
+}
+
+/* ---------- Work ---------- */
+
+.work-grid{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    column-gap:clamp(14px,2vw,28px);
+    row-gap:clamp(48px,8vw,110px);
+}
+
+.piece{
+    position:relative;
+}
+
+.piece:nth-child(6n+1){ grid-column:1 / span 7; }
+.piece:nth-child(6n+2){ grid-column:9 / span 4; margin-top:30%; }
+.piece:nth-child(6n+3){ grid-column:2 / span 4; }
+.piece:nth-child(6n+4){ grid-column:7 / span 6; margin-top:12%; }
+.piece:nth-child(6n+5){ grid-column:1 / span 5; margin-top:-6%; }
+.piece:nth-child(6n+6){ grid-column:7 / span 5; margin-top:18%; }
+
+.piece-frame{
+    position:relative;
+    overflow:hidden;
+    background:var(--paper-deep);
+    aspect-ratio:4 / 5;
+}
+
+.piece:nth-child(6n+4) .piece-frame{ aspect-ratio:5 / 4; }
+
+.piece-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 1.6s var(--ease), filter 1.2s ease;
+}
+
+/* Shown until a real photo is dropped into assets/work/ */
+.piece-frame .placeholder{
+    position:absolute;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    font-size:clamp(60px,9vw,140px);
+    color:rgba(13,13,13,0.12);
+}
+
+.piece-frame.is-empty img{ display:none; }
+.piece-frame.is-empty .placeholder{ display:flex; }
+
+.piece figcaption{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    padding-top:14px;
+}
+
+.piece figcaption .title{
+    font-size:clamp(20px,1.8vw,26px);
+    transition:transform .7s var(--ease), color .5s ease;
+}
+
+.piece figcaption .label{
+    color:var(--ink-soft);
+    white-space:nowrap;
+}
+
+.piece:hover .piece-frame img{
+    transform:scale(1.035);
+}
+
+.piece:hover figcaption .title{
+    transform:translateX(6px);
+    color:var(--petal);
+}
+
+/* ---------- Statement ---------- */
+
+.statement{
+    padding:clamp(80px,14vh,170px) var(--gutter);
+    background:var(--ink);
+    color:var(--paper);
+}
+
+.statement-inner{
+    max-width:1100px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 2.2fr;
+    gap:24px;
+}
+
+.statement .label{
+    color:rgba(243,239,231,0.55);
+    padding-top:12px;
+}
+
+.statement p{
+    font-size:clamp(28px,3.6vw,50px);
+    line-height:1.18;
+}
+
+.statement p + p{
+    margin-top:1em;
+    font-size:clamp(18px,1.6vw,22px);
+    line-height:1.5;
+    color:rgba(243,239,231,0.7);
+    max-width:34em;
+}
+
+/* ---------- Instagram ---------- */
+
+.insta-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+    gap:clamp(14px,2vw,28px);
+    align-items:start;
+}
+
+.insta-grid .instagram-media{
+    min-width:0 !important;
+    width:100% !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    border:1px solid var(--line) !important;
+}
+
+.insta-follow{
+    display:grid;
+    grid-template-columns:1fr 2.2fr;
+    gap:24px;
+    align-items:end;
+}
+
+.insta-follow a.handle{
+    font-size:clamp(40px,7vw,104px);
+    line-height:1;
+    text-decoration:none;
+    word-break:break-word;
+}
+
+.insta-follow p{
+    color:var(--ink-soft);
+    font-size:18px;
+    margin-top:18px;
+}
+
+.insta-more{
+    margin-top:36px;
+    font-size:20px;
+}
+
+/* ---------- Enquire ---------- */
+
+.enquire{
+    border-top:1px solid var(--line);
+}
+
+.enquire-inner{
+    display:grid;
+    grid-template-columns:1fr 1.25fr;
+    gap:clamp(40px,8vw,120px);
+}
+
+.enquire h2{
+    font-weight:400;
+    font-size:clamp(46px,7vw,104px);
+    line-height:0.95;
+}
+
+.enquire-intro{
+    margin-top:28px;
+    font-size:19px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    max-width:24em;
+}
+
+.contact-list{
+    list-style:none;
+    margin-top:40px;
+    display:grid;
     gap:16px;
 }
 
-.form-row .form-group{
-    flex:1;
+.contact-list li{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    align-items:baseline;
+    font-size:19px;
+}
+
+.contact-list .label{
+    color:var(--ink-soft);
+}
+
+.contact-list a{
+    text-decoration:none;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
 }
 
 .form-group{
-    margin-bottom:18px;
+    margin-bottom:30px;
 }
 
 .form-group label{
     display:block;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:1px;
-    text-transform:uppercase;
+    color:var(--ink-soft);
     margin-bottom:6px;
-    color:#000;
 }
 
 .form-group input,
 .form-group textarea{
     width:100%;
     border:none;
-    border-bottom:2px solid #000;
-    padding:8px 0;
-    font-size:16px;
-    font-family:inherit;
+    border-bottom:1px solid rgba(13,13,13,0.35);
+    border-radius:0;
+    padding:8px 0 10px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:22px;
+    color:var(--ink);
     background:transparent;
     resize:vertical;
+    transition:border-color .5s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus{
     outline:none;
-    border-bottom-color:#777;
+    border-bottom-color:var(--ink);
 }
 
 .form-error{
-    color:#c0392b;
-    font-size:14px;
-    margin-bottom:16px;
-}
-
-.captcha-wrap{
-    display:flex;
-    justify-content:center;
+    color:var(--petal);
+    font-size:17px;
     margin-bottom:18px;
 }
 
-.submit-btn{
-    width:100%;
-    border:none;
-    border-radius:50px;
-    background:#000;
-    color:#fff;
-    padding:16px;
-    font-weight:700;
-    font-size:16px;
-    font-family:inherit;
-    cursor:pointer;
-    transition:all .3s cubic-bezier(0.4,0,0.2,1);
+.captcha-wrap{
+    margin-bottom:26px;
 }
 
-.submit-btn:hover:not(:disabled){
-    background:#333;
+.submit-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    border:1px solid var(--ink);
+    border-radius:50px;
+    background:var(--ink);
+    color:var(--paper);
+    padding:15px 34px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:20px;
+    cursor:pointer;
+    transition:background-color .5s ease, color .5s ease, letter-spacing .5s ease, transform .5s var(--ease);
+}
+
+.submit-btn:hover:not(:disabled),
+.submit-btn:focus-visible{
+    background:transparent;
+    color:var(--ink);
+    letter-spacing:0.02em;
+    transform:translateY(-1px);
+    outline:none;
 }
 
 .submit-btn:disabled{
-    opacity:0.6;
+    opacity:0.5;
     cursor:not-allowed;
 }
 
-.thank-you h2{
-    font-size:28px;
-    letter-spacing:2px;
-    margin-bottom:12px;
+.thank-you h3{
+    font-weight:400;
+    font-size:clamp(36px,4vw,56px);
+    margin-bottom:14px;
 }
 
 .thank-you p{
-    font-size:15px;
-    color:#333;
+    font-size:19px;
+    color:var(--ink-soft);
 }
 
-@media (max-width:700px){
+/* ---------- Footer ---------- */
 
-.logo{
-    margin-bottom:45px;
+.site-footer{
+    padding:clamp(60px,10vh,120px) var(--gutter) 28px;
+    border-top:1px solid var(--line);
 }
 
-h1{
-    letter-spacing:4px;
-    margin-bottom:35px;
+.footer-logo img{
+    width:100%;
+    mix-blend-mode:multiply;
 }
 
-.cta-row{
+.footer-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:16px;
+    margin-top:28px;
+    color:var(--ink-soft);
+}
+
+.footer-row a{
+    text-decoration:none;
+}
+
+/* ---------- Scroll reveal ---------- */
+
+.reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity 1.2s ease, transform 1.2s var(--ease);
+}
+
+.reveal.is-in{
+    opacity:1;
+    transform:none;
+}
+
+@media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+        animation:none !important;
+        transition:none !important;
+    }
+    .hero-logo img,.hero-line,.reveal{
+        opacity:1;
+        transform:none;
+    }
+    html{ scroll-behavior:auto; }
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width:760px){
+
+.site-header{
+    grid-template-columns:auto 1fr;
+}
+
+.site-header .label.place{
+    display:none;
+}
+
+.site-header .mini-logo{
+    justify-self:start;
+    width:78px;
+}
+
+.site-nav{
+    font-size:16px;
+}
+
+.hero-line,
+.section-head,
+.statement-inner,
+.insta-follow,
+.enquire-inner{
+    grid-template-columns:1fr;
+}
+
+.section-head .aside{
+    grid-column:1;
+}
+
+.work-grid{
+    grid-template-columns:1fr 1fr;
+    row-gap:44px;
+}
+
+.piece:nth-child(n){
+    grid-column:auto;
+    margin-top:0;
+}
+
+.piece:nth-child(3n+1){
+    grid-column:1 / -1;
+}
+
+.piece:nth-child(3n+2){
+    margin-top:22%;
+}
+
+.piece:nth-child(n) .piece-frame{
+    aspect-ratio:4 / 5;
+}
+
+.piece figcaption{
     flex-direction:column;
-    width:100%;
-}
-
-.instagram-btn,
-.talk-btn{
-    width:100%;
-    justify-content:center;
-    font-size:17px;
-}
-
-.modal-card{
-    padding:32px 24px;
+    gap:4px;
 }
 
 .form-row{
-    flex-direction:column;
+    grid-template-columns:1fr;
     gap:0;
+}
+
+.contact-list li{
+    grid-template-columns:90px 1fr;
 }
 
 }
@@ -312,138 +675,333 @@ h1{
 
 <body>
 
-<div class="container">
+<header class="site-header" id="top">
+    <span class="label place">Adelaide, South Australia</span>
+    <a class="mini-logo" href="#top" aria-label="PIK Studio, back to top">
+        <img src="assets/logo.PNG" alt="">
+    </a>
+    <nav class="site-nav" aria-label="Main">
+        <a class="link" href="#work">Work</a>
+        <a class="link" href="#instagram">Instagram</a>
+        <a class="link" href="#enquire">Let's talk</a>
+    </nav>
+</header>
 
-    <div class="logo">
+<main>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+        <div class="hero-logo">
+            <img src="assets/logo.PNG" alt="PIK Studio">
+        </div>
+        <div class="hero-line">
+            <p class="label">(Designer flowers)</p>
+            <h1>Flowers with a <em>point of view.</em></h1>
+        </div>
+    </section>
+
+    <!-- ===== Ticker (edit the flower names freely) ===== -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+            <span>Ranunculus</span><span>●</span>
+            <span>Fritillaria</span><span>●</span>
+            <span>Hellebore</span><span>●</span>
+            <span>Garden roses</span><span>●</span>
+            <span>Sweet pea</span><span>●</span>
+            <span>Anemone</span><span>●</span>
+            <span>Clematis</span><span>●</span>
+            <span>Japanese maple</span><span>●</span>
+            <span>Ranunculus</span><span>●</span>
+            <span>Fritillaria</span><span>●</span>
+            <span>Hellebore</span><span>●</span>
+            <span>Garden roses</span><span>●</span>
+            <span>Sweet pea</span><span>●</span>
+            <span>Anemone</span><span>●</span>
+            <span>Clematis</span><span>●</span>
+            <span>Japanese maple</span><span>●</span>
+        </div>
+    </div>
+
+    <!-- ===== Selected work =====
+         To add your photos: put them in assets/work/ named 01.jpg, 02.jpg ... 06.jpg
+         (or change the src below). Edit the titles and labels to suit each piece.
+         Copy a <figure> block to add more — the layout repeats every six. -->
+    <section class="section" id="work">
+        <div class="section-head reveal">
+            <span class="label">(01)</span>
+            <h2>Selected work</h2>
+            <p class="aside">Weddings, events, editorial &amp; the everyday.</p>
+        </div>
+
+        <div class="work-grid">
+
+            <figure class="piece reveal">
+                <div class="piece-frame">
+                    <img src="assets/work/01.jpg" alt="Bridal arrangement" loading="lazy">
+                    <span class="placeholder">01</span>
+                </div>
+                <figcaption>
+                    <span class="title">A spring wedding</span>
+                    <span class="label">Wedding</span>
+                </figcaption>
+            </figure>
+
+            <figure class="piece reveal">
+                <div class="piece-frame">
+                    <img src="assets/work/02.jpg" alt="Hand-tied bouquet" loading="lazy">
+                    <span class="placeholder">02</span>
+                </div>
+                <figcaption>
+                    <span class="title">Hand-tied, loosely</span>
+                    <span class="label">Bouquet</span>
+                </figcaption>
+            </figure>
+
+            <figure class="piece reveal">
+                <div class="piece-frame">
+                    <img src="assets/work/03.jpg" alt="Studio still life" loading="lazy">
+                    <span class="placeholder">03</span>
+                </div>
+                <figcaption>
+                    <span class="title">Still life, no. 3</span>
+                    <span class="label">Studio</span>
+                </figcaption>
+            </figure>
+
+            <figure class="piece reveal">
+                <div class="piece-frame">
+                    <img src="assets/work/04.jpg" alt="Event installation" loading="lazy">
+                    <span class="placeholder">04</span>
+                </div>
+                <figcaption>
+                    <span class="title">The long table</span>
+                    <span class="label">Event</span>
+                </figcaption>
+            </figure>
+
+            <figure class="piece reveal">
+                <div class="piece-frame">
+                    <img src="assets/work/05.jpg" alt="Editorial floral work" loading="lazy">
+                    <span class="placeholder">05</span>
+                </div>
+                <figcaption>
+                    <span class="title">For the page</span>
+                    <span class="label">Editorial</span>
+                </figcaption>
+            </figure>
+
+            <figure class="piece reveal">
+                <div class="piece-frame">
+                    <img src="assets/work/06.jpg" alt="Weekly arrangement" loading="lazy">
+                    <span class="placeholder">06</span>
+                </div>
+                <figcaption>
+                    <span class="title">This week's vase</span>
+                    <span class="label">Everyday</span>
+                </figcaption>
+            </figure>
+
+        </div>
+    </section>
+
+    <!-- ===== Statement (rewrite in your own words) ===== -->
+    <section class="statement">
+        <div class="statement-inner reveal">
+            <span class="label">The studio</span>
+            <div>
+                <p>Every arrangement starts with the season: what's blooming, what's wild, and what won't come round again.</p>
+                <p>PIK Studio designs flowers for people who want something with a little more shape and character. Tell us about the occasion and we'll take it from there.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Instagram =====
+         Add post links to INSTAGRAM_POSTS in the script at the bottom of this file
+         and they'll appear here as embeds. Until then, a follow panel shows. -->
+    <section class="section" id="instagram">
+        <div class="section-head reveal">
+            <span class="label">(02)</span>
+            <h2>From the studio</h2>
+            <p class="aside">Lately, on Instagram.</p>
+        </div>
+
+        <div class="insta-grid" id="instaGrid" hidden></div>
+
+        <div class="insta-follow reveal" id="instaFollow">
+            <span class="label">Follow along</span>
+            <div>
+                <a class="handle link" href="https://www.instagram.com/pikstudio.adl" target="_blank" rel="noopener noreferrer">@pikstudio.adl</a>
+                <p>New work, studio days and whatever's in season.</p>
+            </div>
+        </div>
+
+        <p class="insta-more" id="instaMore" hidden>
+            <a class="link" href="https://www.instagram.com/pikstudio.adl" target="_blank" rel="noopener noreferrer">More on Instagram &rarr;</a>
+        </p>
+    </section>
+
+    <!-- ===== Enquire ===== -->
+    <section class="section enquire" id="enquire">
+        <div class="enquire-inner">
+
+            <div class="reveal">
+                <span class="label">(03)</span>
+                <h2>Let's talk<br>flowers.</h2>
+                <p class="enquire-intro">Weddings, events, gifts or something for the table? Tell us a little about what you have in mind and we'll be in touch shortly.</p>
+
+                <ul class="contact-list">
+                    <li>
+                        <span class="label">Email</span>
+                        <a class="link" href="mailto:enquires@pikstudio.com.au">enquires@pikstudio.com.au</a>
+                    </li>
+                    <li>
+                        <span class="label">Instagram</span>
+                        <a class="link" href="https://www.instagram.com/pikstudio.adl" target="_blank" rel="noopener noreferrer">@pikstudio.adl</a>
+                    </li>
+                    <li>
+                        <span class="label">Studio</span>
+                        <span>Adelaide, South Australia</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="reveal">
+                <div id="formView">
+                    <form id="enquiryForm" novalidate>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="label" for="firstName">First name</label>
+                                <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="label" for="lastName">Last name</label>
+                                <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="label" for="email">Email</label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="label" for="mobile">Mobile</label>
+                            <input type="tel" id="mobile" name="mobile" autocomplete="tel" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="label" for="enquiry">Your enquiry</label>
+                            <textarea id="enquiry" name="enquiry" rows="4" required></textarea>
+                        </div>
+
+                        <!-- Web3Forms config (https://web3forms.com) -->
+                        <input type="hidden" name="access_key" value="b355c877-3881-4a5b-bef6-9bcb6263b08b">
+                        <input type="hidden" name="subject" value="New enquiry from PIK Studio website">
+                        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+                        <!-- hCaptcha (spam protection) — https://docs.web3forms.com/getting-started/customizations/spam-protection/hcaptcha -->
+                        <div class="captcha-wrap">
+                            <div class="h-captcha" data-captcha="true"></div>
+                        </div>
+
+                        <p class="form-error" id="formError" hidden></p>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">Send enquiry</button>
+
+                    </form>
+                </div>
+
+                <div id="thankYouView" class="thank-you" hidden>
+                    <h3>Thank you.</h3>
+                    <p>We've received your message and will be in touch as soon as we can.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="footer-logo">
         <img src="assets/logo.PNG" alt="PIK Studio">
     </div>
-
-    <div class="cta-row">
-
-        <a
-            class="instagram-btn"
-            href="https://www.instagram.com/pikstudio.adl"
-            target="_blank"
-            rel="noopener noreferrer">
-
-            Follow us on Instagram
-
-        </a>
-
-        <button type="button" class="talk-btn" id="openTalkModal">
-            Let's talk
-        </button>
-
+    <div class="footer-row label">
+        <span>&copy; <span id="year"></span> PIK Studio</span>
+        <a class="link" href="https://www.instagram.com/pikstudio.adl" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="link" href="#top">Back to top</a>
     </div>
-
-</div>
-
-<div class="footer">
-PIK STUDIO
-</div>
-
-<dialog id="talkModal" class="talk-modal">
-    <div class="modal-card">
-
-        <button type="button" class="modal-close" id="closeTalkModal" aria-label="Close">&times;</button>
-
-        <div id="formView">
-            <h2>Let's talk</h2>
-            <p class="modal-subtitle">Tell us a bit about your enquiry and we'll get back to you shortly.</p>
-
-            <form id="enquiryForm" novalidate>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First name</label>
-                        <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last name</label>
-                        <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" autocomplete="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="mobile">Mobile</label>
-                    <input type="tel" id="mobile" name="mobile" autocomplete="tel" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="enquiry">Your enquiry</label>
-                    <textarea id="enquiry" name="enquiry" rows="4" required></textarea>
-                </div>
-
-                <!-- Web3Forms config (https://web3forms.com) -->
-                <input type="hidden" name="access_key" value="b355c877-3881-4a5b-bef6-9bcb6263b08b">
-                <input type="hidden" name="subject" value="New enquiry from PIK Studio website">
-                <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-
-                <!-- hCaptcha (spam protection) — https://docs.web3forms.com/getting-started/customizations/spam-protection/hcaptcha -->
-                <div class="captcha-wrap">
-                    <div class="h-captcha" data-captcha="true"></div>
-                </div>
-
-                <p class="form-error" id="formError" hidden></p>
-
-                <button type="submit" class="submit-btn" id="submitBtn">Send enquiry</button>
-
-            </form>
-        </div>
-
-        <div id="thankYouView" class="thank-you" hidden>
-            <h2>Thank you!</h2>
-            <p>We've received your message and will contact you as soon as possible.</p>
-        </div>
-
-    </div>
-</dialog>
+</footer>
 
 <script>
+/* ---------- Instagram posts ----------
+   Paste the links of the posts you want to show, e.g.
+   'https://www.instagram.com/p/ABC123xyz/'
+   Six works nicely. Leave empty to show the follow panel instead. */
+const INSTAGRAM_POSTS = [
+];
+
 (function(){
 
-    // Web3Forms — https://web3forms.com
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Header gets a hairline and the small logo once you scroll past the hero
+    const header = document.querySelector('.site-header');
+    const heroLogo = document.querySelector('.hero-logo');
+    new IntersectionObserver(function(entries){
+        header.classList.toggle('is-scrolled', !entries[0].isIntersecting);
+    }).observe(heroLogo);
+
+    // Gentle reveal as sections come into view
+    const revealer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+            if (entry.isIntersecting){
+                entry.target.classList.add('is-in');
+                revealer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin:'0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ revealer.observe(el); });
+
+    // Portfolio: show a numbered placeholder until the photo exists
+    document.querySelectorAll('.piece-frame img').forEach(function(img){
+        function empty(){ img.parentElement.classList.add('is-empty'); }
+        if (img.complete && img.naturalWidth === 0) empty();
+        img.addEventListener('error', empty);
+    });
+
+    // Instagram embeds
+    if (INSTAGRAM_POSTS.length){
+        const grid = document.getElementById('instaGrid');
+        INSTAGRAM_POSTS.forEach(function(url){
+            const quote = document.createElement('blockquote');
+            quote.className = 'instagram-media';
+            quote.setAttribute('data-instgrm-permalink', url);
+            quote.setAttribute('data-instgrm-version', '14');
+            grid.appendChild(quote);
+        });
+        grid.hidden = false;
+        document.getElementById('instaFollow').hidden = true;
+        document.getElementById('instaMore').hidden = false;
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.instagram.com/embed.js';
+        document.body.appendChild(s);
+    }
+
+})();
+
+/* ---------- Enquiry form (Web3Forms) ---------- */
+(function(){
+
     const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
-    const modal = document.getElementById('talkModal');
-    const openBtn = document.getElementById('openTalkModal');
-    const closeBtn = document.getElementById('closeTalkModal');
     const form = document.getElementById('enquiryForm');
     const submitBtn = document.getElementById('submitBtn');
     const formError = document.getElementById('formError');
     const formView = document.getElementById('formView');
     const thankYouView = document.getElementById('thankYouView');
-
-    openBtn.addEventListener('click', function(){
-        modal.showModal();
-    });
-
-    closeBtn.addEventListener('click', function(){
-        modal.close();
-    });
-
-    // Close when clicking the dark backdrop (outside the card)
-    modal.addEventListener('click', function(e){
-        const rect = modal.getBoundingClientRect();
-        const clickedInside =
-            e.clientX >= rect.left && e.clientX <= rect.right &&
-            e.clientY >= rect.top && e.clientY <= rect.bottom;
-        if (!clickedInside) modal.close();
-    });
-
-    // Reset back to the form view each time the modal is closed
-    modal.addEventListener('close', function(){
-        formView.hidden = false;
-        thankYouView.hidden = true;
-        form.reset();
-        formError.hidden = true;
-        if (window.hcaptcha) window.hcaptcha.reset();
-    });
 
     form.addEventListener('submit', async function(e){
         e.preventDefault();
@@ -466,7 +1024,7 @@ PIK STUDIO
         formData.set('message', 'Mobile: ' + form.mobile.value.trim() + '\n\n' + form.enquiry.value.trim());
 
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.textContent = 'Sending…';
 
         try {
             const res = await fetch(WEB3FORMS_ENDPOINT, {
@@ -483,6 +1041,7 @@ PIK STUDIO
 
             formView.hidden = true;
             thankYouView.hidden = false;
+            form.reset();
         } catch (err) {
             formError.textContent = "Something went wrong sending your message. Please try again, or email us directly at enquires@pikstudio.com.au.";
             formError.hidden = false;
