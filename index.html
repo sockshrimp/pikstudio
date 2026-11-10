@@ -19,14 +19,14 @@
 <meta property="og:locale" content="en_AU">
 <meta property="og:url" content="https://pikstudio.com.au/">
 <meta property="og:title" content="PIK Studio | Sustainable Florist Adelaide">
-<meta property="og:description" content="Designer flowers for weddings, events and gifts. By appointment only. Zero foam, zero plastic.">
+<meta property="og:description" content="Designer flowers for weddings, events and gifts. By appointment. Zero foam, zero plastic.">
 <meta property="og:image" content="https://pikstudio.com.au/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="PIK Studio logo">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PIK Studio | Sustainable Florist Adelaide">
-<meta name="twitter:description" content="Designer flowers for weddings, events and gifts. By appointment only. Zero foam, zero plastic.">
+<meta name="twitter:description" content="Designer flowers for weddings, events and gifts. By appointment. Zero foam, zero plastic.">
 <meta name="twitter:image" content="https://pikstudio.com.au/assets/og-image.jpg">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -905,6 +905,24 @@ a{
     html{ scroll-behavior:auto; }
 }
 
+/* ---------- Switches (see the note above <body>) ---------- */
+
+.hide-service-photos .service-frame,
+.hide-selected-work .f-selected-work,
+.hide-seasonal .f-seasonal{
+    display:none !important;
+}
+
+.hide-service-photos .service{
+    margin-top:0 !important;
+    border-top:1px solid var(--line);
+    padding-top:26px;
+}
+
+.hide-service-photos .service-head{
+    margin-top:0;
+}
+
 /* ---------- Small screens ---------- */
 
 @media (max-width:760px){
@@ -1019,16 +1037,25 @@ a{
 
 </head>
 
-<body>
+<!--
+    SWITCHES: features that are built but hidden for now.
+    To bring one back, delete its word from the class list below.
+      hide-service-photos  photo slots above Weddings / Events / Gifts
+                           (add photos at assets/services/weddings.jpg, events.jpg, gifts.jpg)
+      hide-selected-work   the "Selected work" portfolio + "Work" menu link
+                           (add photos at assets/work/01.jpg ... 06.jpg)
+      hide-seasonal        "Seasonal, always" in The fine print
+-->
+<body class="hide-service-photos hide-selected-work hide-seasonal">
 
 <header class="site-header" id="top">
-    <span class="label place">Adelaide &middot; By appointment only</span>
+    <span class="label place">Adelaide &middot; By appointment</span>
     <a class="mini-logo" href="#top" aria-label="PIK Studio, back to top">
         <img src="assets/logo.PNG" alt="" width="1600" height="800">
     </a>
     <nav class="site-nav" aria-label="Main">
         <a class="link" href="#services">Services</a>
-        <a class="link" href="#work">Work</a>
+        <a class="link f-selected-work" href="#work">Work</a>
         <a class="link nav-approach" href="#approach">Approach</a>
         <a class="link" href="#enquire">Let's talk</a>
     </nav>
@@ -1043,7 +1070,7 @@ a{
         </div>
         <div class="hero-line">
             <div>
-                <p class="label">(Sustainable florist, Adelaide)<br>Weddings &middot; Events &middot; Gifts<br>By appointment only</p>
+                <p class="label">(Sustainable florist, Adelaide)<br>Weddings &middot; Events &middot; Gifts<br>By appointment</p>
                 <a class="arrow-link link hero-cta" href="#enquire">Book a consult <span class="arr">&rarr;</span></a>
             </div>
             <h1><span class="sr-only">PIK Studio, sustainable florist in Adelaide. </span>Flowers,<br>minus <em>the plastic.</em></h1>
@@ -1109,7 +1136,7 @@ a{
          To add your photos: put them in assets/work/ named 01.jpg, 02.jpg ... 06.jpg
          (or change the src below). Edit the titles and labels to suit each piece.
          Copy a <figure> block to add more — the layout repeats every six. -->
-    <section class="section" id="work">
+    <section class="section f-selected-work" id="work">
         <div class="section-head reveal">
             <h2>Selected work</h2>
             <p class="aside">A few we're proud of.</p>
@@ -1230,7 +1257,7 @@ a{
                     <p>Paper, string, cloth and vessels you'll actually want to keep. Nothing you'll feel weird about binning.</p>
                 </div>
             </li>
-            <li class="principle reveal">
+            <li class="principle reveal f-seasonal">
                 <span class="num">iv.</span>
                 <div class="principle-body">
                     <h3>Seasonal, always</h3>
@@ -1243,7 +1270,7 @@ a{
     <!-- ===== By appointment ===== -->
     <section class="section" id="appointment">
         <div class="section-head reveal">
-            <h2>By appointment only</h2>
+            <h2>By appointment</h2>
             <p class="aside">No walk-ins. All the attention.</p>
         </div>
 
@@ -1318,7 +1345,7 @@ a{
                     </li>
                     <li>
                         <span class="label">Studio</span>
-                        <span>Adelaide, by appointment only</span>
+                        <span>Adelaide, by appointment</span>
                     </li>
                 </ul>
             </div>
@@ -1402,7 +1429,7 @@ a{
     </div>
     <div class="footer-row label">
         <span>&copy; <span id="year"></span> PIK Studio</span>
-        <span>By appointment only &middot; Zero foam &middot; Zero plastic</span>
+        <span>By appointment &middot; Zero foam &middot; Zero plastic</span>
         <a class="link" href="https://www.instagram.com/pikstudio.adl" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a class="link" href="#top">Back to top</a>
     </div>
